@@ -4,21 +4,24 @@
          src="./../../../assets/imgs/logo.png"
          alt="Buzz Feed logo"
          >
-    <h1>Title</h1>
+    <h1>{{quizzData.title}}</h1>
+  </div>
+  <div *ngIf="!finished">
+    <div class="quiz_question flex-center">
+      <h3>{{getSelectedQuestion()?.question ?? ''}}</h3>
+    </div>
+
+    <div class="quizz_options flex-center" >
+      <app-btn
+        *ngFor="let option of getSelectedQuestion()?.options"
+        (click)="playerchoose(option.alias)"
+        [btnText]="option.name"
+      >
+      </app-btn>
+    </div>
   </div>
 
-  <div class="quiz_question flex-center">
-    <h3>Question</h3>
-  </div>
-
-  <div class="quizz_options flex-center">
-    <app-btn [btnText]="'Answer'"></app-btn>
-    <app-btn [btnText]="'Answer'"></app-btn>
-    <app-btn [btnText]="'Answer'"></app-btn>
-    <app-btn [btnText]="'Answer'"></app-btn>
-  </div>
-
-  <div class="quizz_results flex-center">
+  <div class="quizz_results flex-center" *ngIf="finished">
     <h2>O seu resultado é:</h2>
     <p>Resposta selecionada</p>
   </div>
