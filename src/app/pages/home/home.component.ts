@@ -11,7 +11,8 @@ export class HomeComponent implements OnInit {
 
   quizz_questions:QuizzData = {
     title: '',
-    questions: []
+    questions: [],
+    results: {}
   }
 
   constructor() { }
